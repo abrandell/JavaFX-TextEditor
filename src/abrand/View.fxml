@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="master-pane" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="abrand.Controller">
+   <center>
+      <TextArea fx:id="textArea" nodeOrientation="LEFT_TO_RIGHT" styleClass="editor-text" wrapText="true">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+         <effect>
+            <InnerShadow choke="0.46" color="#010103" height="19.4" radius="7.375" width="12.1" />
+         </effect>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </TextArea>
+   </center>
+   <top>
+       <MenuBar prefHeight="25.0" prefWidth="600.0" stylesheets="@Stylesheet.css" BorderPane.alignment="CENTER">
+           <Menu text="File">
+               <MenuItem fx:id="newFile" mnemonicParsing="false" onAction="#newFile" text="New">
+                   <accelerator>
+                       <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                   </accelerator>
+               </MenuItem>
+               <MenuItem fx:id="openFile" mnemonicParsing="false" onAction="#openFile" text="Open">
+                   <accelerator>
+                       <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                   </accelerator>
+               </MenuItem>
+               <MenuItem fx:id="save" onAction="#save" text="Save">
+                   <accelerator>
+                       <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                   </accelerator>
+               </MenuItem>
+               <SeparatorMenuItem mnemonicParsing="false" />
+               <MenuItem id="close" mnemonicParsing="false" onAction="#exit" text="Close" />
+           </Menu>
+           <Menu mnemonicParsing="false" text="Edit">
+            <items>
+               <Menu mnemonicParsing="false" text="Font...">
+                  <items>
+                     <CheckMenuItem fx:id="small" mnemonicParsing="false" onAction="#fontSize" text="Small ( 14px )" />
+                     <CheckMenuItem fx:id="average" mnemonicParsing="false" onAction="#fontSize" text="Average ( 22px )" />
+                     <CheckMenuItem fx:id="large" mnemonicParsing="false" onAction="#fontSize" text="Large ( 30px )" />
+                  </items>
+               </Menu>
+            </items></Menu>
+           <Menu mnemonicParsing="false" text="Info">
+               <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+           </Menu>
+       </MenuBar>
+   </top>
+</BorderPane>

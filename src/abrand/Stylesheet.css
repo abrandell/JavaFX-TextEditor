@@ -1,0 +1,40 @@
+.master-pane {
+    -fx-background-color: #2F343F;
+}
+
+.text-area {
+    -fx-text-fill: #B4C4D0;
+    -fx-font-size: 22px;
+    -fx-font-family: "Consolas";
+    -fx-focus-color: transparent;
+}
+
+.menu-bar {
+    -fx-background-color: #2F343F;
+    -fx-font-size: 16px;
+    -fx-font-family: "Consolas";
+}
+
+.menu .label {
+    -fx-text-fill: #D1D6C5;
+}
+
+menu-bar:hover, .menu-item:hover{
+    -fx-background-color: #404552;
+}
+
+.text-area .content {
+    -fx-background-color: #393939
+
+}
+
+.menu-item, .context-menu {
+    -fx-background-color: #2F343F;
+}
+
+.menu-bar > .container > .menu-button:hover,
+.menu-bar > .container > .menu-button:focused,
+.menu-bar > .container > .menu-button:showing {
+    -fx-background-color: #404552;
+}
+
