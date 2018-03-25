@@ -120,6 +120,9 @@ public class Controller implements Initializable {
         alert.showAndWait();
     }
 
+
+    //TODO add a proper font-size menu && color selection
+
     @FXML
     public void fontSize(ActionEvent e) {
         String choice = ((CheckMenuItem) e.getSource()).getId();
