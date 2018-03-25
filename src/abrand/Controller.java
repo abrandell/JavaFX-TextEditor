@@ -16,12 +16,11 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-
     @FXML
     private TextArea textArea;
+
     private Stage stage;
     private final FileChooser fileChooser = new FileChooser();
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -39,24 +38,27 @@ public class Controller implements Initializable {
 
     @FXML
     public void exit() {
-        if (textArea.getLength() > 0) {
-            Alert alert =
-                    new Alert(
-                            Alert.AlertType.NONE,
-                            "Exit without saving?",
-                            ButtonType.YES,
-                            ButtonType.NO,
-                            ButtonType.CANCEL);
+        if (textArea.getText().isEmpty()) {
+            Platform.exit();
+            return;
+        }
 
-            alert.setTitle("Confirm");
-            alert.showAndWait();
+        Alert alert = new Alert(
+                Alert.AlertType.NONE,
+                "Exit without saving?",
+                ButtonType.YES,
+                ButtonType.NO,
+                ButtonType.CANCEL
+        );
 
-            if (alert.getResult() == ButtonType.NO) {
-                save();
-            } else if (alert.getResult() == ButtonType.YES) {
-                Platform.exit();
-            }
-        } else {
+        alert.setTitle("Confirm");
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            Platform.exit();
+        }
+        if (alert.getResult() == ButtonType.NO) {
+            save();
             Platform.exit();
         }
     }
@@ -74,8 +76,10 @@ public class Controller implements Initializable {
                 out.write(textArea.getText());
                 out.close();
             }
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("Error: " + e);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -99,8 +103,10 @@ public class Controller implements Initializable {
                 textArea.appendText(text + "\n");
             }
             buffReader.close();
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("Error: " + e);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -116,12 +122,11 @@ public class Controller implements Initializable {
         alert.setTitle("About");
         alert.setHeaderText("A project just for fun written by abrand.");
         alert.setContentText("github.com/abrandell");
-
         alert.showAndWait();
     }
 
 
-    //TODO add a proper font-size menu && color selection
+    //TODO Add a proper font-size menu && color selection
 
     @FXML
     public void fontSize(ActionEvent e) {
