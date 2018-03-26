@@ -10,6 +10,7 @@ import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,7 +45,7 @@ public class Controller implements Initializable {
         }
 
         Alert alert = new Alert(
-                Alert.AlertType.NONE,
+                Alert.AlertType.CONFIRMATION,
                 "Exit without saving?",
                 ButtonType.YES,
                 ButtonType.NO,
@@ -66,7 +67,6 @@ public class Controller implements Initializable {
     @FXML
     private void save() {
         try {
-            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
             fileChooser.setTitle("Save As");
             File file = fileChooser.showSaveDialog(stage);
 
@@ -94,21 +94,21 @@ public class Controller implements Initializable {
         }
     }
 
+
+    // sets the textArea to the text of the opened file
     private void readText(File file) {
         String text;
 
-        try {
-            BufferedReader buffReader = new BufferedReader(new FileReader(file));
+        try (BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
             while ((text = buffReader.readLine()) != null) {
                 textArea.appendText(text + "\n");
             }
-            buffReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Error: " + e);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    //TODO add confirmation window if text editor has text and wasn't saved
 
     @FXML
     public void newFile() {
@@ -125,8 +125,7 @@ public class Controller implements Initializable {
         alert.showAndWait();
     }
 
-
-    //TODO Add a proper font-size menu && color selection
+    // TODO Add a proper font-size menu && color selection
 
     @FXML
     public void fontSize(ActionEvent e) {
@@ -136,7 +135,7 @@ public class Controller implements Initializable {
             case "small":
                 textArea.setStyle("-fx-font-size: 14px");
                 break;
-            case "average":
+            case "default":
                 textArea.setStyle("-fx-font-size: 22px");
                 break;
             case "large":

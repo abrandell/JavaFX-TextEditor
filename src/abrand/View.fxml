@@ -52,7 +52,7 @@
                <Menu mnemonicParsing="false" text="Font...">
                   <items>
                      <CheckMenuItem fx:id="small" mnemonicParsing="false" onAction="#fontSize" text="Small ( 14px )" />
-                     <CheckMenuItem fx:id="average" mnemonicParsing="false" onAction="#fontSize" text="Average ( 22px )" />
+                     <CheckMenuItem fx:id="default" mnemonicParsing="false" onAction="#fontSize" text="Default ( 22px )" />
                      <CheckMenuItem fx:id="large" mnemonicParsing="false" onAction="#fontSize" text="Large ( 30px )" />
                   </items>
                </Menu>
